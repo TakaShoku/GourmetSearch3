@@ -135,6 +135,11 @@ public class YahooLocalSearch {
         params["start"] = String(shops.count + 1)
         params["results"] = String(perPage)
         
+        
+//        API実行開始を通知する
+        NotificationCenter.default.post(name: .apiLoadStart, object: nil)
+        
+        
         _ = Alamofire.request(apiUrl, method: .get, parameters: params).response {
             
             response in
@@ -143,7 +148,16 @@ public class YahooLocalSearch {
                 json = SwiftyJSON.JSON(data: response.data!)
             }
             
+            
+//            エラーがあれば終了
             if response.error != nil {
+                
+//                API実行終了を通知する
+                var message = "Unknown error."
+                if let error = response.error {
+                    message = "\(error)"
+                }
+                NotificationCenter.default.post(name: .apiLoadComplete, object: nil, userInfo: ["error": message])
                 return
             }
             
@@ -192,6 +206,9 @@ public class YahooLocalSearch {
             } else {
                 self.total = 0
             }
+            
+//            API実行終了を通知する
+            NotificationCenter.default.post(name: .apiLoadComplete, object: nil)
         }
         
     }
