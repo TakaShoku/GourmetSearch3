@@ -11,6 +11,13 @@ import Alamofire
 import SwiftyJSON
 
 
+public extension Notification.Name {
+    
+    public static let apiLoadStart = Notification.Name("ApiLoadStart")
+    public static let apiLoadComplete = Notification.Name("ApiLoadComplete")
+}
+
+
 public struct Shop: CustomStringConvertible {
     public var gid: String? = nil
     public var name: String? = nil
@@ -174,7 +181,7 @@ public class YahooLocalSearch {
                         shop.station = "\(line)"
                     }
                 }
-                print(shop)
+//                print(shop)
                 
                 self.shops.append(shop)
                 
