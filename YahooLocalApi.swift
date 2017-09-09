@@ -41,3 +41,58 @@ public struct Shop: CustomStringConvertible {
       }
 }
 
+public struct QueryCondition {
+    
+    public var query: String? = nil
+    public var gid : String? = nil
+    
+    public enum Sort: String {
+        case score = "score"
+        case geo = "geo"
+    }
+    
+    public var sort: Sort = .score
+    public var lat: Double? = nil
+    public var lon: Double? = nil
+    public var dist: Double? = nil
+    
+    public var queryParams: [String: String] {
+        get {
+            
+            var params = [String: String]()
+            
+            if let unwrapped = query {
+                params["query"] = unwrapped
+            }
+            
+            if let unwrapped = gid {
+                params["gid"] = unwrapped
+            }
+            
+            switch sort {
+            case .score:
+                params["sort"] = "score"
+            case .geo:
+                params["sort"] = "geo"
+            }
+            
+            if let unwrapped = lat {
+                params["lat"] =  "\(unwrapped)"
+                
+            }
+            if let unwrapped = lon {
+                params["lon"] =  "\(unwrapped)"
+            }
+                if let unwrapped = dist {
+                    params["dist"] = "\(unwrapped)"
+            }
+        params["device"] = "mobile"
+        params["group"] = "gid"
+        params["image"] = "true"
+        params["gc"] = "01"
+            
+        return params
+        
+        }
+}
+}
