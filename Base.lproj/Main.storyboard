@@ -51,7 +51,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zAY-8p-FRf">
                                                     <rect key="frame" x="107" y="69" width="260" height="22"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="クーポン" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDI-nG-BGE">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="クーポン" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDI-nG-BGE">
                                                             <rect key="frame" x="0.0" y="0.5" width="60" height="22"/>
                                                             <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
@@ -96,8 +96,22 @@
                                                 <constraint firstItem="zAY-8p-FRf" firstAttribute="leading" secondItem="GIz-wE-J5I" secondAttribute="trailing" constant="8" id="iY6-4d-XxC"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="coupon" destination="iDI-nG-BGE" id="sJb-dO-HGS"/>
+                                            <outlet property="iconContainer" destination="zAY-8p-FRf" id="OxU-0d-tXr"/>
+                                            <outlet property="name" destination="aWd-ba-ZH9" id="l5c-JX-pmU"/>
+                                            <outlet property="nameHeight" destination="URK-d2-zi9" id="buD-eS-1Mc"/>
+                                            <outlet property="photo" destination="GIz-wE-J5I" id="wxe-St-p7s"/>
+                                            <outlet property="station" destination="Y3q-XW-SGV" id="Vlr-TT-Uco"/>
+                                            <outlet property="stationWidth" destination="q7U-8Q-15i" id="d6H-xS-cMi"/>
+                                            <outlet property="stationX" destination="nA1-Zv-3ur" id="c3V-0d-dSY"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="N3z-vU-spL"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="HXv-g9-YP0"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -108,6 +122,9 @@
                             <constraint firstAttribute="trailing" secondItem="dx5-GL-ine" secondAttribute="trailing" id="sfM-ZB-jga"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableview" destination="dx5-GL-ine" id="X9D-d0-kwE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
