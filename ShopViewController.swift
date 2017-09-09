@@ -12,6 +12,9 @@ class ShopViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var tableview: UITableView!
     
+    var yls: YahooLocalSearch = YahooLocalSearch()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -21,6 +24,19 @@ class ShopViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        var qc = QueryCondition()
+        qc.query = "ハンバーガー"
+        yls = YahooLocalSearch(condition: qc)
+        yls.loadData(reset: true)
+    }
+    
+    
+    
+    
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         

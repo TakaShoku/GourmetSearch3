@@ -115,7 +115,7 @@ public class YahooLocalSearch {
     public init(){}
     public init(condition: QueryCondition){self.condition = condition}
     
-    public func loadDate(reset: Bool = false) {
+    public func loadData(reset: Bool = false) {
         if reset {
             shops = []
             total = 0
@@ -174,6 +174,8 @@ public class YahooLocalSearch {
                         shop.station = "\(line)"
                     }
                 }
+                print(shop)
+                
                 self.shops.append(shop)
                 
             }
