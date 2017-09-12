@@ -15,11 +15,28 @@ class ShopViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var yls: YahooLocalSearch = YahooLocalSearch()
     var loadDataObserver: NSObjectProtocol?
+    var refreshObserver: NSObjectProtocol?
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+    let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(ShopViewController.onRefresh(_:)),
+        for: .valueChanged); self.tableView.addSubview(refreshControl)
+        
+        
+    }
+    
+    func onRefresh(_ refreshControl: UIRefreshControl) {
+        refreshControl.beginRefreshing ()
+        refreshObserver = NotificationCenter.default.addObserver(forName: .apiLoadComplete, object: nil, queue: nil, using: {
+            notification in
+            NotificationCenter.default.removeObserver(self.refreshObserver!)
+            refreshControl.endRefreshing()
+        })
+        yls.loadData(reset: true)
     }
 
     
