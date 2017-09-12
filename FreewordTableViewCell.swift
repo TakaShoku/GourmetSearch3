@@ -13,6 +13,7 @@ class FreewordTableViewCell: UITableViewCell {
     @IBOutlet weak var freeword: UITextField!
     
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

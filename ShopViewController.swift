@@ -42,9 +42,9 @@ class ShopViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        var qc = QueryCondition()
-        qc.query = "ハンバーガー"
-        yls = YahooLocalSearch(condition: qc)
+//        var qc = QueryCondition()
+//        qc.query = "ハンバーガー"
+//        yls = YahooLocalSearch(condition: qc)
         
         loadDataObserver = NotificationCenter.default.addObserver(forName: .apiLoadComplete, object: nil, queue: nil, using:{ (notification) in
             

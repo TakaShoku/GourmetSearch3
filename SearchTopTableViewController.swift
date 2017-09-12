@@ -8,10 +8,15 @@
 
 import UIKit
 
-class SearchTopTableViewController: UITableViewController {
+class SearchTopTableViewController: UITableViewController, UITextFieldDelegate {
+    
+    
+    @IBOutlet weak var freeword: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -24,28 +29,74 @@ class SearchTopTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 44
+    }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        
+        switch section {
+        case 0:
+            return 1
+        default:
+            return 0
+        }
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        
+        if indexPath.section == 0 && indexPath.row == 0 {
+        
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Freeword") as! FreewordTableViewCell
 
-        // Configure the cell...
+        freeword = cell.freeword
+            
+        cell.freeword.delegate = self
+        cell.selectionStyle = .none
 
         return cell
     }
-    */
+        
+        return UITableViewCell()
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        performSegue(withIdentifier: "PushShopList", sender: self)
+        
+        return true
+    }
+    
+    @IBAction func onTap(_ sender: UITapGestureRecognizer) {
+        freeword?.resignFirstResponder()
+    }
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PushShopList" {
+            let vc = segue.destination as! ShopViewController
+            vc.yls.condition.query = freeword?.text
+        }
+        
+        
+        
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.

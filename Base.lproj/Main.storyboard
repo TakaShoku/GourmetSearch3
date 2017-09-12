@@ -17,6 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Freeword" id="GTh-Ys-i0d" customClass="FreewordTableViewCell" customModule="GourmetSearch3" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -54,21 +55,27 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="freeword" destination="Jpw-4G-eW8" id="Apx-7E-4vF"/>
+                                    <outlet property="freeword" destination="Jpw-4G-eW8" id="Zfz-a1-jCC"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="e7h-bo-bBi" id="RRS-bh-Kyj"/>
                             <outlet property="delegate" destination="e7h-bo-bBi" id="LgJ-Fw-HTg"/>
+                            <outletCollection property="gestureRecognizers" destination="nNz-nr-QTS" appends="YES" id="Gec-Rp-cgy"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="店舗検索" id="xd3-Ic-k0t"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="PushshopList" id="WK3-ZJ-vVx"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="PushShopList" id="LIi-qa-18p"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ReL-a7-gnj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="nNz-nr-QTS">
+                    <connections>
+                        <action selector="onTap:" destination="e7h-bo-bBi" id="8Zh-55-hy9"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-735" y="37"/>
         </scene>
