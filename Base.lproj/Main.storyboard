@@ -123,7 +123,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="tableview" destination="dx5-GL-ine" id="X9D-d0-kwE"/>
+                        <outlet property="tableView" destination="dx5-GL-ine" id="f9r-vb-CDV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

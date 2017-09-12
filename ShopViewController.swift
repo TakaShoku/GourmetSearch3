@@ -10,7 +10,8 @@ import UIKit
 
 class ShopViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var tableview: UITableView!
+    @IBOutlet weak var tableView: UITableView!
+   
     
     var yls: YahooLocalSearch = YahooLocalSearch()
     var loadDataObserver: NSObjectProtocol?
@@ -21,10 +22,6 @@ class ShopViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -33,6 +30,8 @@ class ShopViewController: UIViewController, UITableViewDelegate, UITableViewData
         yls = YahooLocalSearch(condition: qc)
         
         loadDataObserver = NotificationCenter.default.addObserver(forName: .apiLoadComplete, object: nil, queue: nil, using:{ (notification) in
+            
+            self.tableView.reloadData()
             
 //            print("APIリクエスト完了")
             
@@ -62,29 +61,37 @@ class ShopViewController: UIViewController, UITableViewDelegate, UITableViewData
         NotificationCenter.default.removeObserver(self.loadDataObserver!)
     }
     
-    
-    
-    
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        return 100
-        
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection: Int) -> Int {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) ->
+        CGFloat {
+        return 100
+    }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 20
+        if section == 0 {
+            return yls.shops.count
+        }
+        
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
+            if indexPath.row < yls.shops.count {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "ShopItem") as!
             ShopItemTableViewCell
-            cell.name.text = "\(indexPath.row)"
+            cell.shop = yls.shops[indexPath.row]
             return cell
+        }
         }
         return UITableViewCell()
       }
