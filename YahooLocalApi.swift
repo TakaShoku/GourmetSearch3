@@ -111,6 +111,7 @@ public class YahooLocalSearch {
     let apiUrl = "http://search.olp.yahooapis.jp/OpenLocalPlatform/V1/localSearch"
     let perPage = 10
     public var shops = [Shop]()
+    var loading = false
     public var total = 0
     var condition: QueryCondition = QueryCondition() {
         didSet {
@@ -123,10 +124,13 @@ public class YahooLocalSearch {
     public init(condition: QueryCondition){self.condition = condition}
     
     public func loadData(reset: Bool = false) {
+        if loading { return }
         if reset {
             shops = []
             total = 0
         }
+        
+        loading = true
         
         var params = condition.queryParams
         
@@ -151,6 +155,8 @@ public class YahooLocalSearch {
             
 //            エラーがあれば終了
             if response.error != nil {
+                
+                self.loading = false
                 
 //                API実行終了を通知する
                 var message = "Unknown error."
@@ -206,6 +212,8 @@ public class YahooLocalSearch {
             } else {
                 self.total = 0
             }
+            
+            self.loading = false
             
 //            API実行終了を通知する
             NotificationCenter.default.post(name: .apiLoadComplete, object: nil)

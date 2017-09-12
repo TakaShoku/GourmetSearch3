@@ -90,7 +90,14 @@ class ShopViewController: UIViewController, UITableViewDelegate, UITableViewData
             let cell = tableView.dequeueReusableCell(withIdentifier: "ShopItem") as!
             ShopItemTableViewCell
             cell.shop = yls.shops[indexPath.row]
-            return cell
+            
+            if yls.shops
+                .count < yls.total {
+                if yls.shops.count - indexPath.row <= 4 {
+                    yls.loadData()
+                }
+                }
+                return cell
         }
         }
         return UITableViewCell()
