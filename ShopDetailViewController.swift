@@ -10,7 +10,8 @@ import UIKit
 import MapKit
 
 class ShopDetailViewController: UIViewController {
-    
+
+    var shop = Shop()
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var photo: UIImageView!
@@ -41,16 +42,41 @@ class ShopDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
-
-        // Do any additional setup after loading the view.
-    }
+    
+        if let url = shop.photoUrl {
+            
+            photo.sd_setImage(with: URL(string: url),
+                              placeholderImage: UIImage(named: "loading"));
+        } else {
+            
+            photo.image = UIImage(named: "loading")
+        }
+//        店舗名
+        name.text = shop.name
+//        電話番号
+        tel.text = shop.tel
+//        住所
+        address.text = shop.address
+        }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewDidLayoutSubviews() {
+        let nameFrame = name.sizeThatFits(CGSize(width: name.frame.size.width, height: CGFloat.greatestFiniteMagnitude))
+        nameHeight.constant = nameFrame.height
+        
+        let addressFrame = address.sizeThatFits(
+            CGSize(width: address.frame.size.width, height: CGFloat.greatestFiniteMagnitude))
+        addressContainerHeight.constant = addressFrame.height
+        view.layoutIfNeeded()
+    }
+    
+    
+    
+    
     
 
     /*

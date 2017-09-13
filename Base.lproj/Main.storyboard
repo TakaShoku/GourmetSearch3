@@ -299,7 +299,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="13h-Ow-Gmr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-746.39999999999998" y="922.48875562218893"/>
+            <point key="canvasLocation" x="791" y="36"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="haJ-RN-p04">
@@ -432,6 +432,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="dx5-GL-ine" id="f9r-vb-CDV"/>
+                        <segue destination="wM6-gs-fS2" kind="show" identifier="PushShopDetail" id="8yK-T3-nqJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
