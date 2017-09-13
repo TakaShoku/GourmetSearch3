@@ -89,6 +89,11 @@ class ShopViewController: UIViewController, UITableViewDelegate, UITableViewData
         return 100
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "PushShopDetail", sender: indexPath)
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -119,4 +124,15 @@ class ShopViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         return UITableViewCell()
       }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue .identifier == "PushShopDetail" {
+            let vc = segue .destination as! ShopDetailViewController
+            if let indexPath = sender as? IndexPath {
+                vc.shop = yls.shops[indexPath.row]
+            }
+        }
+    }
+    
+    
    }
