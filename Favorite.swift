@@ -46,8 +46,8 @@ public struct Favorite {
         }
     }
     
-    public static func inFavorites(_ git: String) -> Bool {
-        return favorites.contains(git)
+    public static func inFavorites(_ gid: String) -> Bool {
+        return favorites.contains(gid)
     }
     
     public static func move(_ sourceIndex: Int, to destinationIndex: Int){

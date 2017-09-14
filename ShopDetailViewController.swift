@@ -37,12 +37,21 @@ class ShopDetailViewController: UIViewController, UIScrollViewDelegate {
     
     @IBAction func fevoriteTapped(_ sender: Any) {
         
-        print("favoritetapped")
+        guard let gid = shop.gid else{
+            return
+        }
+        
+        Favorite.toggle(gid)
+        updateFavoriteButton()
+    
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        お気に入り状態をボタンラベルに反映
+        updateFavoriteButton()
         
     
         if let url = shop.photoUrl {
@@ -92,6 +101,20 @@ class ShopDetailViewController: UIViewController, UIScrollViewDelegate {
         if scrollOffset <= 0 {
             photo.frame.origin.y = scrollOffset
             photo.frame.size.height = 200 - scrollOffset
+        }
+    }
+    
+    func updateFavoriteButton() {
+        guard let gid = shop.gid else {
+            return
+        }
+        
+        if Favorite.inFavorites(gid) {
+            favoriteIcon.image = UIImage(named: "star-on")
+            favoriteLabel.text = "お気に入りからはずす"
+        } else {
+            favoriteIcon.image = UIImage(named: "star-off")
+            favoriteLabel.text = "お気に入りに入れる"
         }
     }
     
