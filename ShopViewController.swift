@@ -69,9 +69,10 @@ class ShopViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     )
         
-        
+        if yls.shops.count == 0{
         
         yls.loadData(reset: true)
+    }
     }
     
     override func viewDidDisappear(_ animated: Bool) {

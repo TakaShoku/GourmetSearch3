@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class ShopDetailViewController: UIViewController {
+class ShopDetailViewController: UIViewController, UIScrollViewDelegate {
 
     var shop = Shop()
     
@@ -25,9 +25,11 @@ class ShopDetailViewController: UIViewController {
     @IBOutlet weak var favoriteLabel: UILabel!
     
     
-    @IBAction func tapTapped(_ sender: Any) {
+    @IBAction func telTapped(_ sender: Any) {
         print("telTapped")
     }
+    
+   
     
     @IBAction func addressTapped(_ sender: Any) {
         print("address tapped")
@@ -64,6 +66,17 @@ class ShopDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.scrollView.delegate = self
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        self.scrollView.delegate = nil
+        super.viewDidDisappear(animated)
+    }
+    
+    
     override func viewDidLayoutSubviews() {
         let nameFrame = name.sizeThatFits(CGSize(width: name.frame.size.width, height: CGFloat.greatestFiniteMagnitude))
         nameHeight.constant = nameFrame.height
@@ -74,7 +87,13 @@ class ShopDetailViewController: UIViewController {
         view.layoutIfNeeded()
     }
     
-    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let scrollOffset = scrollView.contentOffset.y + scrollView.contentInset.top
+        if scrollOffset <= 0 {
+            photo.frame.origin.y = scrollOffset
+            photo.frame.size.height = 200 - scrollOffset
+        }
+    }
     
     
     

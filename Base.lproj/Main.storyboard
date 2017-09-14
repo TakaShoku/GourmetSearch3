@@ -55,7 +55,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="freeword" destination="Jpw-4G-eW8" id="Zfz-a1-jCC"/>
+                                    <outlet property="freeword" destination="Jpw-4G-eW8" id="koX-Sd-hH8"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -119,7 +119,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                                         <state key="normal" backgroundImage="back"/>
                                                         <connections>
-                                                            <action selector="tapTapped:" destination="wM6-gs-fS2" eventType="touchUpInside" id="eTT-HG-Ihh"/>
+                                                            <action selector="telTapped:" destination="wM6-gs-fS2" eventType="touchUpInside" id="qfn-cj-HU8"/>
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="電話番号" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBZ-x0-r0v" userLabel="電話番号">
@@ -294,7 +294,6 @@
                         <outlet property="photo" destination="zQj-Ke-WqO" id="dls-Dc-OTM"/>
                         <outlet property="scrollView" destination="eyf-lb-YwI" id="7wf-oz-3Ym"/>
                         <outlet property="tel" destination="Abk-eO-UXr" id="zcr-jh-MI9"/>
-                        <outlet property="telTapped" destination="Lnn-Qc-8xy" id="Eea-8f-1K4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="13h-Ow-Gmr" userLabel="First Responder" sceneMemberID="firstResponder"/>

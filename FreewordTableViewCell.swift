@@ -10,6 +10,7 @@ import UIKit
 
 class FreewordTableViewCell: UITableViewCell {
 
+    
     @IBOutlet weak var freeword: UITextField!
     
     
