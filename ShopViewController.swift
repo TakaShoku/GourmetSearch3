@@ -36,7 +36,17 @@ class ShopViewController: UIViewController, UITableViewDelegate, UITableViewData
             NotificationCenter.default.removeObserver(self.refreshObserver!)
             refreshControl.endRefreshing()
         })
+        
+        if self.navigationController is FavoriteNavigationController {
+            
+            loadFavorites()
+            
+        } else {
+            
+            
         yls.loadData(reset: true)
+            
+        }
     }
 
     
@@ -70,6 +80,17 @@ class ShopViewController: UIViewController, UITableViewDelegate, UITableViewData
     )
         
         if yls.shops.count == 0{
+            if self.navigationController is FavoriteNavigationController {
+                
+                loadFavorites()
+                
+                self.navigationItem.title = "お気に入り"
+            } else {
+                
+                yls.loadData(reset: true)
+                
+                self.navigationItem.title = "店舗一覧"
+            }
         
         yls.loadData(reset: true)
     }
@@ -135,5 +156,21 @@ class ShopViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    
-   }
+    func loadFavorites() {
+        
+        Favorite.load()
+        
+        if Favorite.favorites.count > 0 {
+            
+            var condition = QueryCondition()
+            
+            condition.gid = Favorite.favorites.joined(separator: ",")
+            
+            yls.condition = condition
+            yls.loadData(reset: true)
+        } else {
+            
+            NotificationCenter.default.post(name: .apiLoadComplete, object: nil)
+        }
+    }
+    }
