@@ -58,6 +58,13 @@ class ShopViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         loadDataObserver = NotificationCenter.default.addObserver(forName: .apiLoadComplete, object: nil, queue: nil, using:{ (notification) in
             
+            
+            
+            if self.yls.condition.gid != nil {
+                
+                self.yls.sortByGid()
+            }
+            
             self.tableView.reloadData()
             
 //            print("APIリクエスト完了")
