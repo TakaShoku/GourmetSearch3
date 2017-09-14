@@ -31,7 +31,7 @@ public struct Favorite {
         save()
     }
     
-    public static func removie(_ gid: String) {
+    public static func remove(_ gid: String) {
         if let index = favorites.index(of: gid){
         favorites.remove(at: index)
     }
