@@ -68,7 +68,29 @@ class ShopDetailViewController: UIViewController, UIScrollViewDelegate {
         tel.text = shop.tel
 //        住所
         address.text = shop.address
+        
+        
+        if let lat = shop.lat {
+            
+            if let lon = shop.lon {
+                
+                let cllc = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+                let mkcr = MKCoordinateRegionMakeWithDistance(cllc, 200, 200)
+                map.setRegion(mkcr, animated: false )
+            
+            let pin = MKPointAnnotation()
+            pin.coordinate = cllc
+                map.addAnnotation(pin)
         }
+        }
+        
+        updateFavoriteButton()
+        }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.scrollView.delegate = self
+        super.viewWillAppear(animated)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
