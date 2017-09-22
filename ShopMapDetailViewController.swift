@@ -16,10 +16,26 @@ class ShopMapDetailViewController: UIViewController {
     @IBOutlet weak var map: MKMapView!
     @IBOutlet weak var showHereButton: UIBarButtonItem!
     
-    
+    var shop: Shop = Shop()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let lat = shop.lat {
+            if let lon = shop.lon {
+                
+                let cllc = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+                let mkcr = MKCoordinateRegionMakeWithDistance(cllc, 500, 500)
+                map.setRegion(mkcr, animated: false)
+                
+                let pin = MKPointAnnotation()
+                pin.title = shop.name
+                map.addAnnotation(pin)
+            }
+        }
+        
+        self.navigationItem.title = shop.name
 
         // Do any additional setup after loading the view.
     }
