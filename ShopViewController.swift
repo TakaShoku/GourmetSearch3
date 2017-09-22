@@ -200,4 +200,23 @@ class ShopViewController: UIViewController, UITableViewDelegate, UITableViewData
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
       }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        
+        return self.navigationController is FavoriteNavigationController
+        
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
+        if sourceIndexPath == destinationIndexPath {return}
+    
+    let source = yls.shops[sourceIndexPath.row]
+    yls.shops.remove(at: sourceIndexPath.row)
+    yls.shops.insert(source, at: destinationIndexPath.row)
+    
+    Favorite.move(sourceIndexPath.row, to: destinationIndexPath.row)
+    
+    }
+    
     }
