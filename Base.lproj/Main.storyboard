@@ -465,7 +465,13 @@
                             <constraint firstAttribute="trailing" secondItem="dx5-GL-ine" secondAttribute="trailing" id="sfM-ZB-jga"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ceM-Hp-aMa"/>
+                    <navigationItem key="navigationItem" id="ceM-Hp-aMa">
+                        <barButtonItem key="rightBarButtonItem" title="編集" id="iqu-P2-q1v">
+                            <connections>
+                                <action selector="editButtonTapped:" destination="BYZ-38-t0r" id="upj-g1-gKH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="dx5-GL-ine" id="f9r-vb-CDV"/>
                         <segue destination="wM6-gs-fS2" kind="show" identifier="PushShopDetail" id="8yK-T3-nqJ"/>

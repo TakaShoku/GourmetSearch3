@@ -26,6 +26,12 @@ class ShopViewController: UIViewController, UITableViewDelegate, UITableViewData
         refreshControl.addTarget(self, action: #selector(ShopViewController.onRefresh(_:)),
         for: .valueChanged); self.tableView.addSubview(refreshControl)
         
+        if !(self.navigationController is FavoriteNavigationController) {
+            
+            self.navigationItem.rightBarButtonItem = nil
+            
+        }
+        
         
     }
     
@@ -217,6 +223,19 @@ class ShopViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     Favorite.move(sourceIndexPath.row, to: destinationIndexPath.row)
     
+    }
+    
+    @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
+        
+        if tableView.isEditing {
+            
+            tableView.setEditing(false, animated: true)
+            sender.title = "編集"
+        } else {
+            
+            tableView.setEditing(true, animated: true)
+            sender.title = "完了"
+        }
     }
     
     }
