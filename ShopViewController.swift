@@ -58,9 +58,6 @@ class ShopViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        var qc = QueryCondition()
-//        qc.query = "ハンバーガー"
-//        yls = YahooLocalSearch(condition: qc)
         
         loadDataObserver = NotificationCenter.default.addObserver(forName: .apiLoadComplete, object: nil, queue: nil, using:{ (notification) in
             
@@ -72,8 +69,6 @@ class ShopViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             
             self.tableView.reloadData()
-            
-//            print("APIリクエスト完了")
             
             if  notification.userInfo != nil {
                 if let userInfo = notification.userInfo as? [String: String] {
