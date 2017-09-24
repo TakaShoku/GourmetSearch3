@@ -11,7 +11,7 @@ import UIKit
 class SearchTopTableViewController: UITableViewController, UITextFieldDelegate, UIGestureRecognizerDelegate{
     
     
-    @IBOutlet weak var freeword: UITextField!
+    var freeword: UITextField? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
