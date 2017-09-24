@@ -29,11 +29,19 @@ class ShopDetailViewController: UIViewController, UIScrollViewDelegate {
         print("telTapped")
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "PushMapDetail" {
+            let vc = segue.destination as! ShopMapDetailViewController
+            vc.shop = shop
+        }
+    }
    
     
     @IBAction func addressTapped(_ sender: UIButton) {
         performSegue(withIdentifier: "PushMapDetail", sender: nil)
-    }
+            }
     
     @IBAction func fevoriteTapped(_ sender: UIButton) {
         
@@ -45,15 +53,6 @@ class ShopDetailViewController: UIViewController, UIScrollViewDelegate {
         updateFavoriteButton()
     
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "PushMapDetail" {
-            let vc = segue.destination as! ShopMapDetailViewController
-            vc.shop = shop
-        }
-    }
-
     
     
     override func viewDidLoad() {
@@ -141,7 +140,7 @@ class ShopDetailViewController: UIViewController, UIScrollViewDelegate {
         }
         
         if Favorite.inFavorites(gid) {
-            favoriteIcon.image = UIImage(named: "star-on")
+            favoriteIcon.image = UIImage(named: "star-on" )
             favoriteLabel.text = "お気に入りからはずす"
         } else {
             favoriteIcon.image = UIImage(named: "star-off")
