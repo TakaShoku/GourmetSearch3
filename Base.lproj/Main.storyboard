@@ -75,6 +75,7 @@
                 <tapGestureRecognizer id="nNz-nr-QTS">
                     <connections>
                         <action selector="onTap:" destination="e7h-bo-bBi" id="8Zh-55-hy9"/>
+                        <outlet property="delegate" destination="e7h-bo-bBi" id="jE7-Ed-3RQ"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
