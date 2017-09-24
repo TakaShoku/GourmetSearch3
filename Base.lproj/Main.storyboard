@@ -68,6 +68,7 @@
                     <navigationItem key="navigationItem" title="店舗検索" id="xd3-Ic-k0t"/>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="PushShopList" id="LIi-qa-18p"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="PushShopListFromHere" id="O9Y-cQ-NDT"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ReL-a7-gnj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -77,7 +78,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-735" y="37"/>
+            <point key="canvasLocation" x="-729" y="36"/>
         </scene>
         <!--お気に入り-->
         <scene sceneID="kN1-VO-SZi">
@@ -529,6 +530,6 @@
         <image name="star-on" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KZN-Bc-1vP"/>
+        <segue reference="O9Y-cQ-NDT"/>
     </inferredMetricsTieBreakers>
 </document>

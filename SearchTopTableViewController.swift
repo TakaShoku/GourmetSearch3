@@ -47,7 +47,7 @@ class SearchTopTableViewController: UITableViewController, UITextFieldDelegate {
         
         switch section {
         case 0:
-            return 1
+            return 2
         default:
             return 0
         }
@@ -56,9 +56,11 @@ class SearchTopTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == 0 && indexPath.row == 0 {
-        
-        
+        if indexPath.section == 0 {
+            
+            switch indexPath.row {
+                
+            case 0:
         let cell = tableView.dequeueReusableCell(withIdentifier: "Freeword") as! FreewordTableViewCell
 
         freeword = cell.freeword
@@ -67,11 +69,23 @@ class SearchTopTableViewController: UITableViewController, UITextFieldDelegate {
         cell.selectionStyle = .none
 
         return cell
+                
+            case 1:
+                let cell = UITableViewCell()
+                cell.textLabel?.text = "現在地から検索"
+                cell.accessoryType = .disclosureIndicator
+                
+                return cell
+            default:
+                return UITableViewCell()
     }
-        
+    }
         return UITableViewCell()
         
+        
     }
+        
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
