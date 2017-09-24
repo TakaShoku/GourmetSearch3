@@ -108,7 +108,7 @@ public struct QueryCondition {
 
 public class YahooLocalSearch {
     let apiId = "dj00aiZpPUxKOTRCUjdjQkdDYSZzPWNvbnN1bWVyc2VjcmV0Jng9YTM-"
-    let apiUrl = "http://search.olp.yahooapis.jp/OpenLocalPlatform/V1/localSearch"
+    let apiUrl = "https://map.yahooapis.jp/search/local/V1/localSearch"
     let perPage = 10
     public var shops = [Shop]()
     var loading = false
