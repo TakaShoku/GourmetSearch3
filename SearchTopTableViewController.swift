@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchTopTableViewController: UITableViewController, UITextFieldDelegate {
+class SearchTopTableViewController: UITableViewController, UITextFieldDelegate, UIGestureRecognizerDelegate{
     
     
     @IBOutlet weak var freeword: UITextField!
@@ -109,6 +109,16 @@ class SearchTopTableViewController: UITableViewController, UITextFieldDelegate {
         
         
         
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        
+        if let ifr = freeword?.isFirstResponder {
+            
+            return ifr
+        }
+        
+        return false
     }
     
 
