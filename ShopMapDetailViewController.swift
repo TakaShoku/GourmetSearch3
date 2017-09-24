@@ -99,13 +99,13 @@ class ShopMapDetailViewController: UIViewController {
             })
         )
         
-//        位置情報を取得したい場合
+//        位置情報を取得した場合
         observers.append(
             nc.addObserver(forName: .didUpdateLocation, object: nil, queue: nil, using: {
                 notification in
                 
 //                [現在地を表示]ボタンをアクティブ
-                self.showHereButton.isEnabled = false
+                self.showHereButton.isEnabled = true
                 
 //                位置情報が渡されていなければ早期離脱
                 guard let userInfo = notification.userInfo as? [String: CLLocation] else {
@@ -118,7 +118,7 @@ class ShopMapDetailViewController: UIViewController {
                 }
                 
 //                店舗が位置情報を持っていなければ早期離脱
-                guard let lat = self.shop.lon else {
+                guard let lat = self.shop.lat else {
                     return
                 }
             

@@ -129,7 +129,7 @@ public class LocationService: NSObject, CLLocationManagerDelegate {
 //    位置情報の取得を開始する
     public func startUpdatingLocation(){
         
-        cllm.stopUpdatingLocation()
+        cllm.startUpdatingLocation()
     }
     
     

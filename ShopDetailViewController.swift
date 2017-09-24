@@ -84,7 +84,7 @@ class ShopDetailViewController: UIViewController, UIScrollViewDelegate {
                 
                 let cllc = CLLocationCoordinate2D(latitude: lat, longitude: lon)
                 let mkcr = MKCoordinateRegionMakeWithDistance(cllc, 200, 200)
-                map.setRegion(mkcr, animated: false )
+                map.setRegion(mkcr, animated: false)
             
             let pin = MKPointAnnotation()
             pin.coordinate = cllc
