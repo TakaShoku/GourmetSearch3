@@ -302,6 +302,13 @@
                             <constraint firstAttribute="trailing" secondItem="eyf-lb-YwI" secondAttribute="trailing" id="gnc-j8-nyw"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="hGc-lZ-lFs">
+                        <barButtonItem key="rightBarButtonItem" title="写真を追加" id="Hzp-PT-xTH">
+                            <connections>
+                                <action selector="addPhotoTapped:" destination="wM6-gs-fS2" id="2dI-H8-Whg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="address" destination="6rh-XT-PJ4" id="MDz-9c-Ejd"/>
                         <outlet property="addressContainerHeight" destination="2r4-Kv-o4V" id="DBf-ov-HwN"/>
@@ -320,7 +327,7 @@
             </objects>
             <point key="canvasLocation" x="951" y="619"/>
         </scene>
-        <!--Title-->
+        <!--Shop Map Detail View Controller-->
         <scene sceneID="rMv-lP-xwi">
             <objects>
                 <viewController id="oGi-Ze-aN8" customClass="ShopMapDetailViewController" customModule="GourmetSearch3" customModuleProvider="target" sceneMemberID="viewController">
@@ -344,7 +351,7 @@
                             <constraint firstAttribute="trailing" secondItem="FQx-g0-dDw" secondAttribute="trailing" id="pQ9-a8-Gh2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="mgo-He-BQY">
+                    <navigationItem key="navigationItem" id="mgo-He-BQY">
                         <barButtonItem key="rightBarButtonItem" title="現在地を表示" id="akO-Al-Mjg">
                             <connections>
                                 <action selector="showHereButtonTapped:" destination="oGi-Ze-aN8" id="Qke-je-dVF"/>

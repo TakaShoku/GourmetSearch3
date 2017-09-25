@@ -9,9 +9,11 @@
 import UIKit
 import MapKit
 
-class ShopDetailViewController: UIViewController, UIScrollViewDelegate {
+class ShopDetailViewController: UIViewController, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
     var shop = Shop()
+    
+    let ipc = UIImagePickerController()
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var photo: UIImageView!
@@ -57,6 +59,12 @@ class ShopDetailViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        Delegateの設定
+        ipc.delegate = self
+        
+//        トリミングなどを行う
+        ipc.allowsEditing = true
         
 //        お気に入り状態をボタンラベルに反映
         updateFavoriteButton()
@@ -149,7 +157,66 @@ class ShopDetailViewController: UIViewController, UIScrollViewDelegate {
         
         }
     
+    @IBAction func addPhotoTapped(_ sender: UIBarButtonItem) {
+        
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        
+//        カメラが使えるか確認して使えるなら「写真を撮る」選択肢を標示
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            
+            alert.addAction(
+                UIAlertAction(title: "写真を撮る", style: .default, handler: {
+                    
+                    action in
+                    
+//                    ソースはカメラ
+                    self.ipc.sourceType = .camera
+                    
+                    
+//                    カメラUIをき起動
+                    self.present(self.ipc, animated: true, completion: nil)
+                })
+            )
+        }
+        
+//        「写真を選択」ボタンはいつでも使える
+        alert.addAction(
+            UIAlertAction(title: "写真を選択", style: .default, handler: {
+                
+                action in
+                
+//                ソースは写真選択
+                self.ipc.sourceType = .photoLibrary
+                
+//                写真選択UIを起動
+                self.present(self.ipc, animated: true, completion: nil)
+            })
+        )
+        
+        alert.addAction(
+            UIAlertAction(title: "キャンセル", style: .cancel, handler: {
+                
+                action in
+            })
+        )
+        
+        present(alert, animated: true, completion: nil)
+    }
     
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        
+        
+        ipc.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        
+        ipc.dismiss(animated: true, completion: nil)
+    }
     
 
     /*
