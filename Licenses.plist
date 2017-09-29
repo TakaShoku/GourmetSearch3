@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<!--
-   Licenses.plist
-   GourmetSearch3
-
-   Created by 曽和寛貴 on 2017/09/29.
-   Copyright (c) 2017年 曽和寛貴. All rights reserved.
--->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-    <dict>
-    
-    </dict>
+<array>
+	<dict>
+		<key>Name</key>
+		<string>Alomofire</string>
+		<key>License</key>
+		<string>Copyright (c) 2014-2016 Alamofire Software Foundation (http://alamofire.org/)
+Copyright (c) 2014-2016 Alamofire Software Foundation (http://alamofire.org/)
+Copyright (c) 2014-2016 Alamofire Software Foundation (http://alamofire.org/)
+Copyright (c) 2014-2016 Alamofire Software Foundation (http://alamofire.org/)
+Copyright (c) 2014-2016 Alamofire Software Foundation (http://alamofire.org/)
+</string>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>SwiftyJSON</string>
+		<key>License</key>
+		<string>The MIT License (MIT)</string>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>SDWebImage</string>
+		<key>License</key>
+		<string>Copyright(C) 2016 Olivier POlitrey rs@dailymotion.com</string>
+	</dict>
+</array>
 </plist>
